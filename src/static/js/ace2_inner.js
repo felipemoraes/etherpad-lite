@@ -254,36 +254,17 @@ function Ace2Inner(){
       if (info.bgcolor)
       {
         var bgcolor = info.bgcolor;
-        if ((typeof info.fade) == "number")
-        {
-          bgcolor = fadeColor(bgcolor, info.fade);
-        }
 
         var authorStyle = dynamicCSS.selectorStyle(authorSelector);
         var parentAuthorStyle = parentDynamicCSS.selectorStyle(authorSelector);
         var anchorStyle = dynamicCSS.selectorStyle(authorSelector + ' > a')
 
-        // author color
-        authorStyle.backgroundColor = bgcolor;
-        parentAuthorStyle.backgroundColor = bgcolor;
+        authorStyle.backgroundColor = '#ffffff';
+        parentAuthorStyle.backgroundColor = '#ffffff';
+        
+        authorStyle.color = bgcolor;
+        parentAuthorStyle.color = bgcolor;
 
-        // text contrast
-        if(colorutils.luminosity(colorutils.css2triple(bgcolor)) < 0.5)
-        {
-          authorStyle.color = '#ffffff';
-          parentAuthorStyle.color = '#ffffff';
-        }else{
-          authorStyle.color = null;
-          parentAuthorStyle.color = null;
-        }
-
-        // anchor text contrast
-        if(colorutils.luminosity(colorutils.css2triple(bgcolor)) < 0.55)
-        {
-          anchorStyle.color = colorutils.triple2css(colorutils.complementary(colorutils.css2triple(bgcolor)));
-        }else{
-          anchorStyle.color = null;
-        }
       }
     }
   }
